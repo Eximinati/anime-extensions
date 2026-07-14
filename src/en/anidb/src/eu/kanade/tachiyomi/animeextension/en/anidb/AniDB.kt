@@ -398,7 +398,9 @@ class AniDB :
             }
         }
 
-        val hasNextPage = document.select("a").any { it.text().contains("Next") }
+        val hasNextPage = document.select("a").any {
+            it.text().contains("Next") && it.attr("href").contains("page=")
+        }
         return AnimesPage(animeMap.values.toList(), hasNextPage)
     }
 
